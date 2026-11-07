@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks — A Minimal To-Do App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- Header -->
+    <header class="app__header">
+      <div>
+        <h1 class="app__title">Tasks</h1>
+        <p class="app__subtitle" id="dateLabel">Stay organized, one task at a time.</p>
+      </div>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Toggle dark mode"
+        title="Toggle theme"
+      >
+        <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
+      </button>
+    </header>
+
+    <!-- Add new task -->
+    <section class="composer">
+      <form class="composer__form" id="taskForm" autocomplete="off">
+        <input
+          type="text"
+          id="taskInput"
+          class="composer__input"
+          placeholder="Add a new task…"
+          maxlength="120"
+          aria-label="New task"
+        />
+        <button type="submit" class="composer__btn">Add</button>
+      </form>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters" id="filters" role="tablist">
+      <button class="filter filter--active" data-filter="all" role="tab">All</button>
+      <button class="filter" data-filter="active" role="tab">Active</button>
+      <button class="filter" data-filter="completed" role="tab">Completed</button>
+    </section>
+
+    <!-- Task list -->
+    <section class="list" aria-live="polite">
+      <ul class="list__items" id="taskList"></ul>
+
+      <!-- Empty state -->
+      <div class="empty" id="emptyState" hidden>
+        <div class="empty__icon">✓</div>
+        <p class="empty__text">Nothing here yet.</p>
+        <p class="empty__hint">Add your first task above.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer" hidden>
+      <span class="footer__count" id="countLabel">0 items left</span>
+      <button class="footer__clear" id="clearCompleted" type="button">
+        Clear completed
+      </button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
